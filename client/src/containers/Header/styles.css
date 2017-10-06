@@ -1,15 +1,15 @@
-.left-container {
+.leftContainer {
     display: flex;
     align-items: center;
     height: 100%;
 }
-.logo-container {
+.logoContainer {
     line-height: 1;
 }
 .logo {
     height: 36px;
 }
-.account-btn-container {
+.accountButtonContainer {
     padding: 6px 0;
     width: 100%;
 }

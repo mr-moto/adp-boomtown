@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import registerServiceWorker from './registerServiceWorker';
 import { Header } from './containers/Header';
+import { Items } from './containers/Items';
 
 import './index.css';
 import muiTheme from './config/theme';
@@ -16,7 +17,7 @@ const Boomtown = () => (
             <Login />
         </Layout> */}
         <Header />
-        <div> HELLO WORLD </div>
+        <Items />
     </MuiThemeProvider>
 
 );

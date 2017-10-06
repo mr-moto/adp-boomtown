@@ -3,7 +3,7 @@ import boomLogo from '../../images/boomtown-logo.svg'
 
 
 const Logo = () => (
-    <a href="/" className="logo-container">
+    <a href="/" className="logoContainer">
         <img className="logo" src={boomLogo} alt="" />
     </a>
 );

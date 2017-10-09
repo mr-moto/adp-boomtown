@@ -8,12 +8,13 @@ class Items extends Component {
         super(props);
         this.state = {
             items: [],
+            users: [],
         }
     }
 
     loadData() {
         fetch('http://localhost:3001/items')
-        .then(results => results.json())
+        .then(itemsResults => itemsResults.json())
         .then( json => {
             setTimeout(() => {
                 this.setState({
@@ -21,6 +22,13 @@ class Items extends Component {
                     loading: json,
                 })
             }, 2000);
+            fetch('http://localhost:3001/users')
+            .then(usersResults => usersResults.json())
+            .then( json => {
+                this.setState({
+                    users: json,
+                })
+            })
         })
     }
     componentDidMount() {
@@ -28,11 +36,10 @@ class Items extends Component {
     }
 
     render() {
-        console.log(this.props.itemsData)
         if (!this.state.loading) return <CircularLoader />;
         return (
             <div className="itemsContainer">
-                <ItemsList itemsData={this.state.items}/>  
+                <ItemsList itemsData={this.state.items} usersData={this.state.users}/>  
             </div>  
         );
     } 

@@ -2,22 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import registerServiceWorker from './registerServiceWorker';
-import { Header } from './containers/Header';
-import { Items } from './containers/Items';
+import { 
+    BrowserRouter as Router, 
+    Route,
+    Switch,
+    Link,
+    Redirect
+  } from 'react-router-dom';
 
 import './index.css';
 import muiTheme from './config/theme';
-
+import Routes from './routes/';
 import Layout from './components/Layout';
-import Login from './containers/Login';
 
 const Boomtown = () => (
     <MuiThemeProvider muiTheme={muiTheme}>
-        {/* <Layout>
-            <Login />
-        </Layout> */}
-        <Header />
-        <Items />
+        <Router>
+            <Layout>
+                <Routes />
+            </Layout>
+        </Router>
     </MuiThemeProvider>
 
 );

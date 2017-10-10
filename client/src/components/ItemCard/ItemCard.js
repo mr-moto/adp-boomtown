@@ -16,7 +16,7 @@ class ItemCard extends Component {
                     <img src={imageUrl} alt="" />
                 </CardMedia>
                 <CardHeader title={itemOwner.fullName} avatar={<Gravatar email={itemOwner.email}/> } />
-                <CardTitle title={title} subtitle={tags} />
+                <CardTitle title={title} subtitle={tags.map(tag => tag).join(', ')} />
                 <CardText>{description}</CardText>
             </Card>
         );

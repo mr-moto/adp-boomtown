@@ -11,3 +11,7 @@
   width: 100%;
   flex:1;
 }
+.appFooter {
+  text-align: center;
+  margin: 2rem 0 1rem;
+}

@@ -8,41 +8,71 @@ class Items extends Component {
         super(props);
         this.state = {
             items: [],
-            users: [],
         }
     }
 
-    loadData() {
-        fetch('http://localhost:3001/items')
-        .then(itemsResults => itemsResults.json())
-        .then( json => {
+    componentDidMount() {
+        const urls = [
+            'http://localhost:3001/items',
+            'http://localhost:3001/users'
+        ];  
+        Promise.all(urls.map(url => (
+            fetch(url)
+            .then(response => response.json())
+        )))
+        .then(data => {
+            const [itemData, userData] = data;
+            const modifiedData = itemData.map(item => {
+                return {
+                    ...item,
+                    itemOwner: userData.find(user => user.id === item.itemOwner)
+                }
+            })
             setTimeout(() => {
                 this.setState({
-                    items: json,
-                    loading: json,
+                    items: modifiedData,
+                    loading: modifiedData
                 })
-            }, 2000);
-            fetch('http://localhost:3001/users')
-            .then(usersResults => usersResults.json())
-            .then( json => {
-                this.setState({
-                    users: json,
-                })
-            })
+            }, 3000)
+            
+
         })
-    }
-    componentDidMount() {
-        this.loadData();
     }
 
     render() {
         if (!this.state.loading) return <CircularLoader />;
         return (
             <div className="itemsContainer">
-                <ItemsList itemsData={this.state.items} usersData={this.state.users}/>  
+                <ItemsList itemsData={this.state.items} />  
             </div>  
         );
     } 
-}
+}   
 
 export default Items;
+
+//test out some stuff
+// const ItemUserData = gql`
+//     query getItems {
+//         items {
+//             itemid
+//             title
+//             imageurl
+//             description
+//             itemowner {
+//                 userid  
+//                 email
+//                 fullname
+//             }
+//             tags {
+//                 title
+//             }
+//             created
+//             borrower {
+//                 fullname
+//             }
+//         }
+//     }
+// `;
+
+// const ItemsWithData = graphql(ItemUserData)(Items);

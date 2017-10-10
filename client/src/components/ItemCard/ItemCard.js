@@ -15,8 +15,7 @@ class ItemCard extends Component {
                 <CardMedia overlay={available ? null : <CardTitle subtitle="Unavailable" style={{textTransform: "uppercase"}}/>}>
                     <img src={imageUrl} alt="" />
                 </CardMedia>
-                {/* change gravatar */}
-                <CardHeader title={itemOwner} subtitle={moment.unix(createdOn).fromNow()} avatar={<Gravatar email={itemOwner}/> } />
+                <CardHeader title={itemOwner.fullName} avatar={<Gravatar email={itemOwner.email}/> } />
                 <CardTitle title={title} subtitle={tags} />
                 <CardText>{description}</CardText>
             </Card>

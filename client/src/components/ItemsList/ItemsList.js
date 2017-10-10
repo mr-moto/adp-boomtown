@@ -4,13 +4,16 @@ import Masonry from 'react-masonry-component';
 import './styles.css';
 
 class ItemsList extends Component {
-    state = {  }
+    constructor(props) {
+        super(props)
+        this.state = { }
+      }
     render() {
-        const itemList = this.props.itemsData
+        const {itemsData} = this.props
         return (
             <div className="itemsListWrapper">
                 <Masonry>
-                    {itemList.map(item => 
+                    {itemsData.map((item) => 
                         <div key={item.id} className="itemsWrapper">
                             <ItemCard item={item}/>
                         </div>

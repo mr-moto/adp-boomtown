@@ -1,7 +1,19 @@
 .itemsListWrapper {
     width: 100%;
 }
-.itemsWrapper {
-    width: 33%;
+.itemWrapper {
+    width: 100%;
     padding: 1%;
+}
+
+@media only screen and (min-width: 600px) {
+    .itemWrapper {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    .itemWrapper {
+        width: 33%;
+    }
 }

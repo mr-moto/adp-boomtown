@@ -14,7 +14,7 @@ class ItemsList extends Component {
             <div className="itemsListWrapper">
                 <Masonry>
                     {itemsData.map((item) => 
-                        <div key={item.id} className="itemsWrapper">
+                        <div key={item.id} className="itemWrapper">
                             <ItemCard item={item}/>
                         </div>
                     )}

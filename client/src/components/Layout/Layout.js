@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Header } from '../../containers/Header'
-import { Items } from '../../containers/Items'
+import { ItemsContainer } from '../../containers/Items'
 import './styles.css';
 
 const Layout = ({ children }) => (

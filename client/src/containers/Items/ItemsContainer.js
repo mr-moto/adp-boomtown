@@ -3,7 +3,7 @@ import { ItemsList } from '../../components/ItemsList'
 import {CircularLoader} from '../../components/CircularLoader'
 import './styles.css';
 
-class Items extends Component {
+class ItemsContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -34,7 +34,6 @@ class Items extends Component {
                     loading: modifiedData
                 })
             }, 3000)
-            
 
         })
     }
@@ -43,36 +42,10 @@ class Items extends Component {
         if (!this.state.loading) return <CircularLoader />;
         return (
             <div className="itemsContainer">
-                <ItemsList itemsData={this.state.items} />  
-            </div>  
+                <ItemsList itemsData={this.state.items} />
+            </div>
         );
     } 
 }   
 
-export default Items;
-
-//test out some stuff
-// const ItemUserData = gql`
-//     query getItems {
-//         items {
-//             itemid
-//             title
-//             imageurl
-//             description
-//             itemowner {
-//                 userid  
-//                 email
-//                 fullname
-//             }
-//             tags {
-//                 title
-//             }
-//             created
-//             borrower {
-//                 fullname
-//             }
-//         }
-//     }
-// `;
-
-// const ItemsWithData = graphql(ItemUserData)(Items);
+export default ItemsContainer

@@ -13,12 +13,13 @@ class ItemCard extends Component {
         const {available, imageUrl, itemOwner, createdOn, title, tags, description} = this.props.item;
         return (
             <Card>
-                <CardMedia overlay={available ? null : <CardTitle subtitle="Unavailable" style={{textTransform: "uppercase"}}/>}>
+                <CardMedia overlay={!available ? <CardTitle subtitle="Unavailable" style={{textTransform: "uppercase"}}/> : null}>
                     <img src={imageUrl} alt="" />
                 </CardMedia>
                 <CardHeader title={itemOwner.fullName} subtitle={moment.unix(createdOn).fromNow()} avatar={<Gravatar className="gravatarUserImage" email={itemOwner.email}/> } />
                 <CardTitle title={title} subtitle={tags.map(tag => tag).join(', ')} />
                 <CardText>{description}</CardText>
+                <CardActions>{ available ? <RaisedButton label={'Borrow'} secondary={true}/> : null }</CardActions>
             </Card>
         );
     }

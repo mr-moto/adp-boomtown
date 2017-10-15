@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import registerServiceWorker from './registerServiceWorker';
+import { Header } from './containers/Header';
 
 import './index.css';
 import muiTheme from './config/theme';
@@ -11,9 +12,11 @@ import Login from './containers/Login';
 
 const Boomtown = () => (
     <MuiThemeProvider muiTheme={muiTheme}>
-        <Layout>
+        {/* <Layout>
             <Login />
-        </Layout>
+        </Layout> */}
+        <Header />
+        <div> HELLO WORLD </div>
     </MuiThemeProvider>
 
 );

@@ -8,7 +8,7 @@ class ItemsList extends Component {
         const {itemsData} = this.props
         return (
             <div className="itemsListWrapper">
-                {console.log(this.props)}
+                {console.log('list', this.props)}
                 <Masonry>
                     {itemsData.map(item => 
                         <div key={item.id} className="itemWrapper">

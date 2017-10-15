@@ -3,6 +3,8 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import Gravatar from 'react-gravatar';
 import moment from 'moment';
 import RaisedButton from 'material-ui/RaisedButton';
+import { Link } from 'react-router-dom';
+import {connect} from 'react-redux'
 import './styles.css';
 
 class ItemCard extends Component {
@@ -16,7 +18,9 @@ class ItemCard extends Component {
                 <CardMedia overlay={!available ? <CardTitle subtitle="Unavailable" style={{textTransform: "uppercase"}}/> : null}>
                     <img src={imageUrl} alt="" />
                 </CardMedia>
-                <CardHeader title={itemOwner.fullName} subtitle={moment.unix(createdOn).fromNow()} avatar={<Gravatar className="gravatarUserImage" email={itemOwner.email}/> } />
+                <Link to={{pathname:`/profile/${itemOwner.id}`, user: itemOwner}}>
+                    <CardHeader title={itemOwner.fullName} subtitle={moment.unix(createdOn).fromNow()} avatar={<Gravatar className="gravatarUserImage" email={itemOwner.email}/> } />
+                </Link >
                 <CardTitle title={title} subtitle={tags.map(tag => tag).join(', ')} />
                 <CardText>{description}</CardText>
                 <CardActions>{ available ? <RaisedButton label={'Borrow'} secondary={true}/> : null }</CardActions>
@@ -25,4 +29,4 @@ class ItemCard extends Component {
     }
 }
 
-export default ItemCard;
+export default ItemCard

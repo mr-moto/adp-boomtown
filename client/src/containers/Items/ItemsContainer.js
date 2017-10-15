@@ -12,12 +12,9 @@ class ItemsContainer extends Component {
     }
 
     render() {
-        console.log('hi' + this.props)
         return (
             <div className="itemsContainer">
-                {/* <ItemsList itemsData={this.state.items} /> */}
-                {this.props.users.map((user) => <h1>hi</h1>)}    
-                {console.log(this.props.users)}
+                <ItemsList itemsData={this.props.allItems} />
             </div>
         );
     } 

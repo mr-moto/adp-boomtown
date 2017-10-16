@@ -13,8 +13,19 @@ const getItemsError = (error) => {
     return { type: 'GET_ITEMS_ERROR', error }
 }
 
+export const getItems = (dispatch) => {
+    dispatch(getItemsBegin())
+    return fetch(`${mainURL}/items`)
+        .then(response => {
+            dispatch(getItemsSuccess())
+            return response.json()
+        })
+        .catch(err => {
+            dispatch(getItemsError(err))
+        })
+}
 
-export const getItems = () => {
+export const getItemsAndUsers = () => {
     return (dispatch) => {
         dispatch(getItemsBegin())
         return fetch(`${mainURL}/items`)

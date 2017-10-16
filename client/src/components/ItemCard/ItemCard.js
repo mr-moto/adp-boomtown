@@ -19,7 +19,7 @@ class ItemCard extends Component {
                     <img src={imageUrl} alt="" />
                 </CardMedia>
                 <Link to={{pathname:`/profile/${itemOwner.id}`, user: itemOwner}}>
-                    <CardHeader title={itemOwner.fullName} subtitle={moment.unix(createdOn).fromNow()} avatar={<Gravatar className="gravatarUserImage" email={itemOwner.email}/> } />
+                    <CardHeader title={itemOwner.fullName} subtitle={moment(createdOn).fromNow()} avatar={<Gravatar className="gravatarUserImage" email={itemOwner.email}/> } />
                 </Link >
                 <CardTitle title={title} subtitle={tags.map(tag => tag).join(', ')} />
                 <CardText>{description}</CardText>

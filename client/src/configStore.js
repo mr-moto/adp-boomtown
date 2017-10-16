@@ -1,7 +1,6 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware  } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import { applyMiddleware } from 'redux'
 import {rootReducer} from './reducers'
 
 const configStore = ( initialState ) => {

@@ -3,7 +3,8 @@ const initialState = {
     errorMsg: {},
     isLoading: false,
     allItems: [],
-    filteredItems: []
+    filteredItems: [],
+    singleUser: {}
 }
 
 // const  parseAllItems = (users) => {
@@ -15,14 +16,14 @@ const initialState = {
 //       }, [])
 // }
 
-const mergeUsersItems = (users, items) => {
-    return users.map(user => {
-        return {
-            ...user,
-            items: items.filter(item => item.itemOwner === user.id)
-        }
-    })
-}
+// const mergeUsersItems = (users, items) => {
+//     return users.map(user => {
+//         return {
+//             ...user,
+//             items: items.filter(item => item.itemOwner === user.id)
+//         }
+//     })
+// }
 
 const mergeItemsUsers = (users, items) => {
     return items.map(item => {
@@ -43,14 +44,15 @@ export default (state = initialState, action) => {
             }
         case 'GET_USERS_SUCCESS':
             return {
-                ...state
+                ...state,
+                singleUser: action.user
             }
         case 'GET_ITEMS_SUCCESS':
-            const usersTreated = mergeUsersItems(action.users, action.items)
+            // const usersTreated = mergeUsersItems(action.users, action.items)
             return { 
                 ...state,
                 isLoading: false,
-                users: usersTreated,
+                // users: usersTreated,
                 // allItems: parseAllItems(usersTreated),
                 allItems: mergeItemsUsers(action.users, action.items)
             }

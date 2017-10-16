@@ -9,10 +9,11 @@ class Header extends Component {
     state = {}
     
     render() {
+        let location = window.location.href;
         return(
             <AppBar 
                 showMenuIconButton={false}
-                title={<div className="leftContainer"><Logo /><Filter /></div>}
+                title={<div className="leftContainer"><Logo />{location === 'http://localhost:3000/' ? <Filter /> : null}</div>}
                 iconElementRight={<AccountButtons/>}
                 style={{
                     backgroundColor: "#fff",

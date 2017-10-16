@@ -18,7 +18,7 @@ class ItemCard extends Component {
                 <CardMedia overlay={!available ? <CardTitle subtitle="Unavailable" style={{textTransform: "uppercase"}}/> : null}>
                     <img src={imageUrl} alt="" />
                 </CardMedia>
-                <Link to={{pathname:`/profile/${itemOwner.id}`, user: itemOwner}}>
+                <Link to={`/profile/${itemOwner.id}`}>
                     <CardHeader title={itemOwner.fullName} subtitle={moment(createdOn).fromNow()} avatar={<Gravatar className="gravatarUserImage" email={itemOwner.email}/> } />
                 </Link >
                 <CardTitle title={title} subtitle={tags.map(tag => tag).join(', ')} />

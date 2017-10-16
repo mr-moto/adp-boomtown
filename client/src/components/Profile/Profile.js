@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { ItemsList } from '../ItemsList'
+import './styles.css';
 
 class Profile extends Component {
-    state = {  }
     render() {
         return (
-            <div></div>
+            <div className="profileItemList">
+                <ItemsList itemsData={this.props.userItems} />
+            </div>
         );
     }
 }

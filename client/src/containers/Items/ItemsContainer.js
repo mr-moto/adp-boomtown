@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { ItemsList } from '../../components/ItemsList'
 import {CircularLoader} from '../../components/CircularLoader'
 import { connect } from 'react-redux'
-import { getItemsAndUsers } from '../../actions'
+import { getItems } from '../../actions'
 import './styles.css';
 
 class ItemsContainer extends Component {
 
     componentDidMount() {
-        this.props.getItemsAndUsers()
+        this.props.getItems()
     }
 
     render() {
@@ -21,4 +21,4 @@ class ItemsContainer extends Component {
 }   
 
 
-export default connect((store) => store.items, {getItemsAndUsers})(ItemsContainer)
+export default connect((store) => store.items, {getItems})(ItemsContainer)

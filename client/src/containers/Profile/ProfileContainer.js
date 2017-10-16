@@ -2,21 +2,28 @@ import React, { Component } from 'react';
 import Loader from '../../components/CircularLoader';
 import { Profile } from '../../components/Profile';
 import { connect } from 'react-redux';
-import { getSingleUser } from '../../actions';
+import { getItems } from '../../actions';
 
 
 class ProfileContainer extends Component {
 
     componentDidMount() {
-        this.props.getSingleUser(this.props.match.params.userid)
+        this.props.getItems();
     }
     render() { 
+        const {items} = this.props
         return (
-            <div>
-                {console.log(this.props.singleUser)}
-            </div>
+           <Profile userItems={items} />
         );
     }
 }
-
-export default connect((store) => store.user, {getSingleUser})(ProfileContainer)
+const mapStateToProps = (state, ownProps) => {
+    return {
+        items: state.items.allItems.filter(item=>{
+            if(ownProps.match.params.userid === item.itemOwner.id){
+              return item
+            }
+        })
+    }
+}
+export default connect(mapStateToProps, { getItems })(ProfileContainer);

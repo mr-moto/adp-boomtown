@@ -3,8 +3,6 @@ const initialState = {
     errorMsg: {},
     isLoading: false,
     allItems: [],
-    filteredItems: [],
-    singleUser: {}
 }
 
 // const  parseAllItems = (users) => {
@@ -48,12 +46,9 @@ export default (state = initialState, action) => {
                 singleUser: action.user
             }
         case 'GET_ITEMS_SUCCESS':
-            // const usersTreated = mergeUsersItems(action.users, action.items)
             return { 
                 ...state,
                 isLoading: false,
-                // users: usersTreated,
-                // allItems: parseAllItems(usersTreated),
                 allItems: mergeItemsUsers(action.users, action.items)
             }
         case 'GET_USERS_ERROR':

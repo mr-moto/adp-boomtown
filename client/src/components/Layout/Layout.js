@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import { Header } from '../../containers/Header'
 import './styles.css';
 
+let location = window.location.href;
 const Layout = ({ children }) => (
     <div className="appContentWrapper">
         <div className="appHeader">
             {/* Might want to put your header bar here... */}
-            <Header />
+            {location === 'http://localhost:3000/login' ? null : <Header />}
         </div>
         <div className="appContent">
             {children}

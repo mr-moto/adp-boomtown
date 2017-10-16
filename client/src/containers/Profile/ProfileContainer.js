@@ -4,6 +4,8 @@ import { Profile } from '../../components/Profile';
 import { connect } from 'react-redux';
 import { getItems } from '../../actions';
 
+import './styles.css';
+
 
 class ProfileContainer extends Component {
 
@@ -13,7 +15,9 @@ class ProfileContainer extends Component {
     render() { 
         const {items, users} = this.props
         return (
-            <Profile userItems={items} user={users}/>
+            <div className="profileContainer">
+                {items && users ? <Profile userItems={items} user={users}/> : null}
+            </div>
         );
     }
 }

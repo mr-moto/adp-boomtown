@@ -29,15 +29,15 @@ const ProfileCard = ({userData}) => {
         <Paper style={{ maxWidth: '800px', margin: '0 auto' }}>
             <div className="profileContent">
                 <div className="nameBio">
-                    <h2>:(</h2>
-                    <p></p>
+                    <h2>{userData.fullName}</h2>
+                    <p>{userData.bio}</p>
                 </div>
                 <div className="userMeta">
                     <div className="sharedBorrowed">
-                        <p><span></span> items shared</p>
-                        <p><span></span> items borrowed</p>
+                        <p><span>{userData.shareCount}</span> items shared</p>
+                        <p><span>{userData.borrowCount}</span> items borrowed</p>
                     </div>
-                    {/* <Gravatar email={userData.email} size={180} className="gravatarImage" /> */}
+                    <Gravatar email={userData.email} size={180} className="gravatarImage" />
                 </div>
             </div>
         </Paper>

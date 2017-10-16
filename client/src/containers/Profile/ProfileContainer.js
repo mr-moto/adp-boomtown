@@ -11,19 +11,25 @@ class ProfileContainer extends Component {
         this.props.getItems();
     }
     render() { 
-        const {items} = this.props
+        const {items, users} = this.props
         return (
-           <Profile userItems={items} />
+            <Profile userItems={items} user={users}/>
         );
     }
 }
 const mapStateToProps = (state, ownProps) => {
     return {
-        items: state.items.allItems.filter(item=>{
-            if(ownProps.match.params.userid === item.itemOwner.id){
+        items: state.items.allItems.filter(item => {
+            if(ownProps.match.params.userid === item.itemOwner.id) {
               return item
             }
-        })
+        }),
+        users: state.items.users.find(user => {
+            if(ownProps.match.params.userid === user.id) {
+                return user
+            }
+        }),
     }
 }
+
 export default connect(mapStateToProps, { getItems })(ProfileContainer);

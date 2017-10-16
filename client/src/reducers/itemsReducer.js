@@ -5,37 +5,38 @@ const initialState = {
     allItems: [],
 }
 
-// const  parseAllItems = (users) => {
-//     return users.reduce((acc, cur) => {
-//         cur.items.map(item => {
-//            return acc.push({ uid: cur.id, name: cur.fullName,  item: item })
-//         })
-//         return acc
-//       }, [])
-// }
-
-// const mergeUsersItems = (users, items) => {
-//     return users.map(user => {
-//         return {
-//             ...user,
-//             items: items.filter(item => item.itemOwner === user.id)
-//         }
-//     })
-// }
+const filteredUsers = (users, items) => {
+    return users.map(user => {
+        const borrowCount = items.filter(item => {
+            if(user.id === item.borrower) 
+            return item
+        }).length
+        const shareCount = items.filter(item => {
+            if(user.id === item.itemOwner)
+            return item
+        }).length
+        
+        return {
+            ...user,
+            borrowCount: borrowCount,
+            shareCount: shareCount
+        }
+    })
+}
 
 const mergeItemsUsers = (users, items) => {
     return items.map(item => {
         return {
             ...item,
-            itemOwner: users.filter(user => user.id === item.itemOwner)[0]
+            itemOwner: users.find(user => user.id === item.itemOwner)
         }
     })
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case 'GET_ITEMS_BEGIN':
         case 'GET_USERS_BEGIN':
+        case 'GET_ITEMS_BEGIN':
             return {
                 ...state,
                 isLoading: true
@@ -43,12 +44,12 @@ export default (state = initialState, action) => {
         case 'GET_USERS_SUCCESS':
             return {
                 ...state,
-                singleUser: action.user
             }
         case 'GET_ITEMS_SUCCESS':
             return { 
                 ...state,
                 isLoading: false,
+                users: filteredUsers(action.users, action.items),
                 allItems: mergeItemsUsers(action.users, action.items)
             }
         case 'GET_USERS_ERROR':

@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react'
 import { ItemsList } from '../ItemsList'
-import './styles.css';
+import { ProfileCard } from './'
+import './styles.css'
 
-class Profile extends Component {
-    render() {
-        return (
-            <div className="profileItemList">
-                <ItemsList itemsData={this.props.userItems} />
-            </div>
-        );
-    }
+const Profile = ({user, userItems}) => {
+    return (
+        <div className="profile">
+            <ProfileCard userData={user}/>
+            <ItemsList itemsData={userItems} />
+        </div>
+    )
 }
 
 export default Profile;

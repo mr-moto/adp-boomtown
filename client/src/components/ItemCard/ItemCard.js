@@ -8,9 +8,6 @@ import {connect} from 'react-redux'
 import './styles.css';
 
 class ItemCard extends Component {
-
-    state = {  }
-    
     render() {
         const {available, imageUrl, itemOwner, createdOn, title, tags, description} = this.props.item;
         return (

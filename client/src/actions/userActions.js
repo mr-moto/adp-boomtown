@@ -1,5 +1,4 @@
 import {mainURL} from '../constants';
-import {getItems} from './itemActions'
 
 const getUsersBegin = () => {
     return { type: 'GET_USERS_BEGIN' }

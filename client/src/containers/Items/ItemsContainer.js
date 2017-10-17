@@ -3,6 +3,7 @@ import { ItemsList } from '../../components/ItemsList'
 import {CircularLoader} from '../../components/CircularLoader'
 import { connect } from 'react-redux'
 import { getItems } from '../../actions'
+import { ShareButton } from '../../components/ShareButton'
 import './styles.css';
 
 class ItemsContainer extends Component {
@@ -15,6 +16,7 @@ class ItemsContainer extends Component {
         return (
             <div className="itemsContainer">
                 <ItemsList itemsData={this.props.allItems} />
+                <ShareButton />
             </div>
         );
     } 

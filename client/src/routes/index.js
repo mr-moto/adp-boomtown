@@ -11,6 +11,7 @@ import {NotFound} from '../containers/NotFound'
          <Route exact path="/" component={ItemsContainer} />
          <Route exact path="/login" component={Login} />
          <Route exact path="/profile/:userid" component={Profile} />
+         <Route exact path="/share" component={Share} />;
          <Route path="*" component={NotFound}/>
      </Switch>
  );

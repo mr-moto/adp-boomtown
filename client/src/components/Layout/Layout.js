@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Header } from '../../containers/Header'
+import { Header } from '../Header'
 import './styles.css';
 
 let location = window.location.href;

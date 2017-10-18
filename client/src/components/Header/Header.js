@@ -6,7 +6,6 @@ import boomLogo from '../../images/boomtown-logo.svg'
 import './styles.css'
 
 class Header extends Component {
-    state = {}
     
     render() {
         let location = window.location.href;
@@ -18,7 +17,11 @@ class Header extends Component {
                         <Link to="/" className="logoContainer">
                             <img className="logo" src={boomLogo} alt="" />
                         </Link>
-                        {location === 'http://localhost:3000/' ? <Filter /> : null}</div>
+                        {location === 'http://localhost:3000/' ? 
+                            <Filter /> 
+                            : null
+                        }
+                    </div>
                 }
                 iconElementRight={
                     <div className="accountButtonContainer">

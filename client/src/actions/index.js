@@ -1,2 +1,2 @@
-export {getItems} from './itemActions'
+export {getItems, filteredItems} from './itemActions'
 export {getSingleUser} from './userActions'

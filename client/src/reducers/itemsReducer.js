@@ -3,6 +3,7 @@ const initialState = {
     errorMsg: {},
     isLoading: false,
     allItems: [],
+    selectedTags: []
 }
 
 const filteredUsers = (users, items) => {
@@ -35,6 +36,11 @@ const mergeItemsUsers = (users, items) => {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case 'UPDATE_FILTER':
+            return {
+                ...state, 
+                selectedTags: action.tag
+            }
         case 'GET_USERS_BEGIN':
         case 'GET_ITEMS_BEGIN':
             return {

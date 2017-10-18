@@ -9,7 +9,7 @@ const Layout = ({ children }) => (
     <div className="appContentWrapper">
         <div className="appHeader">
             {/* Might want to put your header bar here... */}
-            {location === 'http://localhost:3000/login' ? null : <Header />}
+            {location !== 'http://localhost:3000/login' ?  <Header /> : null  }
         </div>
         <div className="appContent">
             {children}

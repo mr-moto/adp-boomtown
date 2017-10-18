@@ -13,6 +13,11 @@ const getItemsError = (error) => {
     return { type: 'GET_ITEMS_ERROR', error }
 }
 
+export const filteredItems = (tag) => {
+    return { type: 'UPDATE_FILTER', tag }
+};
+
+
 export const getItems = () => {
     return (dispatch) => {
         dispatch(getItemsBegin())

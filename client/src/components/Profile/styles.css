@@ -1,5 +1,37 @@
 .profile {
     margin: 0 auto;
     max-width: 1140px;
-    width: 100%
+    width: 100%;
+}
+.profileContent {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2rem;
+    margin: 2rem auto;
+}
+.nameBio {
+    flex: 1;
+}
+.name {
+    font-size: 2.5rem;
+}
+.bio {
+    color: rgba(38,50,56,.54);
+}
+.userMeta {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+}
+.sharedBorrowed p {
+    color: rgba(38,50,56,.54);
+    margin-top: 1rem;
+}
+.sharedBorrowed p span {
+    display: block;
+    color: #263238;
+    font-size: 1.25rem;
+}
+.gravatorImage {
+    border-radius: 50%;
 }

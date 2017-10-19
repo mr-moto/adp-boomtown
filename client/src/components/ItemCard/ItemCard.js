@@ -9,14 +9,14 @@ import './styles.css';
 
 class ItemCard extends Component {
     render() {
-        const {available, imageUrl, itemOwner, createdOn, title, tags, description} = this.props.item;
+        const {available, imageurl, itemowner, created, title, tags, description} = this.props.item;
         return (
             <Card>
                 <CardMedia overlay={!available ? <CardTitle subtitle="Unavailable" style={{textTransform: "uppercase"}}/> : null}>
-                    <img src={imageUrl} alt="" />
+                    <img src={imageurl} alt="" />
                 </CardMedia>
-                <Link to={`/profile/${itemOwner.id}`}>
-                    <CardHeader title={itemOwner.fullName} subtitle={moment(createdOn).fromNow()} avatar={<Gravatar className="gravatarUserImage" email={itemOwner.email}/> } />
+                <Link to={`/profile/${itemowner.id}`}>
+                    <CardHeader title={itemowner.fullName} subtitle={moment(created).fromNow()} avatar={<Gravatar className="gravatarUserImage" email={itemowner.email}/> } />
                 </Link >
                 <CardTitle title={title} subtitle={tags.map(tag => tag).join(', ')} />
                 <CardText>{description}</CardText>

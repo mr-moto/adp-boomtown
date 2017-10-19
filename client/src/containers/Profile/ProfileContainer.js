@@ -24,7 +24,7 @@ class ProfileContainer extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         items: state.items.allItems.filter(item => {
-            if(ownProps.match.params.userid === item.itemOwner.id) {
+            if(ownProps.match.params.userid === item.itemowner.id) {
               return item
             }
         }),

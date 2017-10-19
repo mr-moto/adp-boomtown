@@ -13,7 +13,7 @@ const filteredUsers = (users, items) => {
             return item
         }).length
         const shareCount = items.filter(item => {
-            if(user.id === item.itemOwner)
+            if(user.id === item.itemowner)
             return item
         }).length
         
@@ -29,7 +29,7 @@ const mergeItemsUsers = (users, items) => {
     return items.map(item => {
         return {
             ...item,
-            itemOwner: users.find(user => user.id === item.itemOwner)
+            itemowner: users.find(user => user.id === item.itemowner)
         }
     })
 }

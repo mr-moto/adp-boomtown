@@ -14,4 +14,4 @@ app.use('/graphql', bodyParser.json(), graphqlExpress({ schema })); // Where we 
 
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' })); // A route for accessing the GraphiQL tool
 
-app.listen(GQL_PORT, () => console.log(`GraphQL server is running on http://localhost:${GQL_PORT}/graphql`))
+app.listen(GQL_PORT, () => console.log(`GraphQL server is running on http://localhost:${GQL_PORT}/graphiql`))

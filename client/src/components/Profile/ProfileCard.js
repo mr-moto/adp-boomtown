@@ -7,7 +7,7 @@ const ProfileCard = ({userData}) => {
         <Paper style={{ maxWidth: '800px', margin: '0 auto' }}>
             <div className="profileContent">
                 <div className="nameBio">
-                    <h2 className="name">{userData.fullName}</h2>
+                    <h2 className="name">{userData.fullname}</h2>
                     <p className="bio">{userData.bio}</p>
                 </div>
                 <div className="userMeta">

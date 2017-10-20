@@ -16,18 +16,15 @@ const store = configStore();
 
 const Boomtown = () => (
         <MuiThemeProvider muiTheme={muiTheme}>
-            <Router>
-                <Layout>
-                    <Routes />
-                </Layout>
-            </Router>
+            <ApolloProvider client={client} store={store}>
+                <Router>
+                    <Layout>
+                        <Routes />
+                    </Layout>
+                </Router>
+            </ApolloProvider>
         </MuiThemeProvider>
 );
 
-ReactDOM.render(
-    <ApolloProvider client={client} store={store}>
-        <Boomtown />
-    </ApolloProvider>, 
-    document.getElementById('root')
-);
+ReactDOM.render(<Boomtown />, document.getElementById('root'));
 registerServiceWorker();

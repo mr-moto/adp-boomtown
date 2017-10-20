@@ -6,6 +6,7 @@ import './styles.css';
 class ItemsList extends Component {
     render() {
         const {itemsData} = this.props
+        console.log(this.props)
         return (
             <div className="itemsListWrapper">
                 <Masonry>

@@ -6,7 +6,7 @@ const typeDefs = `
     type User {
         id: ID!
         email: String!
-        fullName: String!
+        fullname: String!
         bio: String
         owneditems: [Item]
         borroweditems: [Item]

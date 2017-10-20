@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import registerServiceWorker from './registerServiceWorker';
 import configStore from './configStore';
-import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { ApolloProvider } from 'react-apollo';
+import client from './config/apolloClient';
 
 import './index.css';
 import muiTheme from './config/theme';
@@ -23,5 +24,10 @@ const Boomtown = () => (
         </MuiThemeProvider>
 );
 
-ReactDOM.render(<Provider store={store}><Boomtown /></Provider>, document.getElementById('root'));
+ReactDOM.render(
+    <ApolloProvider client={client} store={store}>
+        <Boomtown />
+    </ApolloProvider>, 
+    document.getElementById('root')
+);
 registerServiceWorker();

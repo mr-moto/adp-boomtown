@@ -3,6 +3,8 @@ import Paper from 'material-ui/Paper'
 import Gravatar from 'react-gravatar'
 
 const ProfileCard = ({userData}) => {
+    const shareCount = userData.owneditems.length
+    const borrowCount = userData.borroweditems.length
     return (
         <Paper style={{ maxWidth: '800px', margin: '0 auto' }}>
             <div className="profileContent">
@@ -12,8 +14,8 @@ const ProfileCard = ({userData}) => {
                 </div>
                 <div className="userMeta">
                     <div className="sharedBorrowed">
-                        <p><span>{userData.shareCount}</span> Items shared</p>
-                        <p><span>{userData.borrowCount}</span> Items borrowed</p>
+                        <p><span>{shareCount}</span> Items shared</p>
+                        <p><span>{borrowCount}</span> Items borrowed</p>
                     </div>
                     <Gravatar email={userData.email} size={180} className="gravatarImage" />
                 </div>

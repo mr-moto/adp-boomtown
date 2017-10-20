@@ -3,11 +3,11 @@ import { ItemsList } from '../ItemsList'
 import { ProfileCard } from './'
 import './styles.css'
 
-const Profile = ({user, userItems}) => {
+const Profile = ({user}) => {
     return (
         <div className="profile">
             <ProfileCard userData={user}/>
-            <ItemsList itemsData={userItems} />
+            <ItemsList itemsData={user.owneditems} />
         </div>
     )
 }

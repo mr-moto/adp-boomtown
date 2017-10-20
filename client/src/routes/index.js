@@ -11,7 +11,7 @@ import {ShareContainer} from '../containers/Share'
      <Switch>
          <Route exact path="/" component={ItemsContainer} />
          <Route exact path="/login" component={Login} />
-         <Route exact path="/profile/:userid" component={Profile} />
+         <Route exact path="/profile/:id" component={Profile} />
          <Route exact path="/share" component={ShareContainer} />;
          <Route path="*" component={NotFound}/>
      </Switch>

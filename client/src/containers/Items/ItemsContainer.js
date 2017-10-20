@@ -39,7 +39,7 @@ class ItemsContainer extends Component {
 }   
 
 export const itemsQuery = gql`
-    query {
+    query getItems {
         items {
             id
             title

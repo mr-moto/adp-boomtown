@@ -61,9 +61,6 @@ export const usersQuery = gql`
                 }
                 created
                 available
-                borrower {
-                    fullname
-                }
             }
             borroweditems{
                 title

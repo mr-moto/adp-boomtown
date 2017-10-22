@@ -1,94 +1,61 @@
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
+import { 
+    getItems, 
+    getUsers, 
+    getItem, 
+    getUser, 
+    ownedItems, 
+    borrowedItems, 
+    createItem
+} from './jsonHelpers'
 
-const url = 'http://localhost:3001'
 
 const resolveFunctions = {
     Query: {
-       async items() {
-            try {
-                const response = await fetch(`${url}/items`)
-                const items = await response.json()
-
-                return items
-            } catch(e) {
-                console.log('error', e)
-            }
+       items() {
+            return getItems();
         },
-        async item(root, { id }) {
-            try {
-                const response = await fetch(`${url}/items/${id}`)
-                const item = await response.json()
-
-                return item
-            } catch(e) {
-                console.log('error', e)
-            }
+        item(root, { id }, context) {
+            return context.loaders.getItem.load(id)
         },
-        async users() {
-            try {
-                const response = await fetch(`${url}/users`)
-                const users = await response.json()
-
-                return users
-            } catch(e) {
-                console.log('error', e)
-            }
+        users() {
+            return getUsers();
         },
-        async user(root, { id }) {
-            try {
-                const response = await fetch(`${url}/users/${id}`)
-                const user = await response.json()
-
-                return user
-            } catch(e) {
-                console.log('error', e)
-            }
+        user(root, { id }, context) {
+            return context.loaders.getUser.load(id)
         }
     },
+
     Item: {
-        async itemowner(item) {
-            try {
-                const response = await fetch(`${url}/users/${item.itemowner}`)
-                const itemowner = await response.json()
-
-                return itemowner
-            } catch(e) {
-                console.log('error', e)
-            }
+        itemowner(item, args, context) {
+            if( !item.itemowner ) return null
+            // return getUser(item.itemowner);
+            return context.loaders.getUser.load(item.itemowner)
         },
-        async borrower(item) {
-            if( !item.borrower ) return null
-            try {
-                const response = await fetch(`${url}/users/${item.borrower}`)
-                const borrower = await response.json()
 
-                return borrower
-            } catch(e) {
-                console.log('error', e)
-            }
+        borrower(item, args, context) {
+            if( !item.borrower ) return null
+            // return getUser(item.borrower);
+            return context.loaders.getUser.load(item.borrower)
         }
     },
+
     User: {
-        async owneditems(user) {
-            try {
-                const response = await fetch(`${url}/items/?itemowner=${user.id}`)
-                const owneditems = await response.json()
-
-                return owneditems
-            } catch(e) {
-                console.log('error', e)
-            }
+        owneditems(user, args, context) {
+            if( !user.id ) return null
+            return context.loaders.ownedItems.load(user.id)
         },
-        async borroweditems(user) {
-            try {
-                const response = await fetch(`${url}/items/?borrower=${user.id}`)
-                const borroweditems = await response.json()
 
-                return borroweditems
-            } catch(e) {
-                console.log('error', e)
-            }
+        borroweditems(user, args, context) {
+            if( !user.id ) return null
+            return context.loaders.borrowedItems.load(user.id)
         }
+    },
+
+    Mutation: {
+        addItem(root, {title, imageurl, itemowner, description, tags}) {
+            return createItem(title, imageurl, itemowner, description, tags)
+        }   
     }
 }
 

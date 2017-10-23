@@ -29,7 +29,7 @@ class ItemCard extends Component {
 ItemCard.PropTypes = {
     data: PropTypes.shape({
         available: PropTypes.bool.isRequired,
-        imageurl: PropTypes.string, 
+        imageurl: PropTypes.string,
         itemowner: PropTypes.shape({
             id: PropTypes.string,
             fullname: PropTypes.string,

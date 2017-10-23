@@ -9,7 +9,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import { Filter } from '../../components/Filter';
+import { ItemCard } from '../../components/ItemCard';
 
 
 class VerticalLinearStepper extends React.Component {
@@ -66,7 +66,22 @@ class VerticalLinearStepper extends React.Component {
         const { finished, stepIndex } = this.state;
 
         return (
-            <div style={{ maxWidth: 380, maxHeight: 400, margin: 'auto' }}>
+            <div>
+                {/* figure out how to not display both overlay and borrow button */}
+                <ItemCard
+                    item={{
+                        id: 1,
+                        title: 'Amazing Item Title',
+                        description: 'Profound item description',
+                        imageurl: '',
+                        available: true,
+                        tags: [],
+                        created: new Date().toString(),
+                        itemowner: {
+                            id: ''
+                        }
+                    }}
+                />
                 <Stepper activeStep={stepIndex} orientation="vertical">
                     <Step>
                         <StepLabel>Add an Image</StepLabel>
@@ -109,6 +124,7 @@ class VerticalLinearStepper extends React.Component {
                             <p>
                                 To share an item, you'll add it to our list of categories. You can select multiple categories.
                             </p>
+                            {/* swap out for filter component later */}
                             <SelectField
                                 hintText="Select Category Tags"
                                 value={this.state.value}

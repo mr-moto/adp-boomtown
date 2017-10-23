@@ -4,8 +4,7 @@ import Gravatar from 'react-gravatar';
 import moment from 'moment';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router-dom';
-import {connect} from 'react-redux'
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import './styles.css';
 
 class ItemCard extends Component {

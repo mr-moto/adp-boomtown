@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { MuiThemeProvider, AppBar, SelectField, MenuItem, RaisedButton } from 'material-ui'
+import { AppBar, RaisedButton } from 'material-ui'
 import { Filter } from '../../components/Filter'
 import PropTypes from 'prop-types'
 import boomLogo from '../../images/boomtown-logo.svg'

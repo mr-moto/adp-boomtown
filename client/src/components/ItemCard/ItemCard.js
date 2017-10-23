@@ -11,7 +11,6 @@ import './styles.css';
 class ItemCard extends Component {
     render() {
         const {available, imageurl, itemowner, created, title, tags, description} = this.props.item;
-        console.log(this.props)
         return (
             <Card>
                 <CardMedia overlay={!available ? <CardTitle subtitle="Unavailable" style={{textTransform: "uppercase"}}/> : null}>

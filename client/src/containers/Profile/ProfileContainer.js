@@ -23,7 +23,30 @@ class ProfileContainer extends Component {
 }
 
 ProfileContainer.PropTypes = {
-    data: PropTypes.object.isRequired
+    data: PropTypes.object.isRequired,
+    loading: PropTypes.bool.isRequired,
+    user: PropTypes.shape({
+        owneditems: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.number.isRequired,
+                available: PropTypes.bool.isRequired, 
+                imageurl: PropTypes.string, 
+                itemowner: PropTypes.shape({
+                    id: PropTypes.string,
+                    fullname: PropTypes.string,
+                    email: PropTypes.string
+                }).isRequired, 
+                created: PropTypes.string.isRequired, 
+                title: PropTypes.string.isRequired, 
+                tags: PropTypes.array, 
+                description: PropTypes.string
+            })
+        ).isRequired,
+        borroweditems: PropTypes.array,
+        fullname: PropTypes.string.isRequired,
+        bio: PropTypes.string,
+        email: PropTypes.string.isRequired 
+    }).isRequired
 }
 
 export const usersQuery = gql`

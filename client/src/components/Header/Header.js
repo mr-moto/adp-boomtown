@@ -9,7 +9,6 @@ import './styles.css'
 class Header extends Component {
     render() {
         let location = window.location.href;
-        console.log(location)
         return(
             <AppBar 
                 showMenuIconButton={false}

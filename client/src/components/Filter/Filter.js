@@ -2,7 +2,7 @@ import React from 'react'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import { connect } from 'react-redux'
-import { filteredItems } from '../../actions/itemActions'
+import { filteredItems } from '../../redux/modules/items'
 import PropTypes from 'prop-types'
 
 

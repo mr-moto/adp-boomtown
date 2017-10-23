@@ -4,7 +4,6 @@ import CircularProgress from 'material-ui/CircularProgress';
 import './styles.css';
 
 class CircularLoader extends Component {
-    state = {  }
     render() {
         return (
             <div className="progressWrapper">

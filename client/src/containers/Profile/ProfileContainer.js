@@ -5,17 +5,13 @@ import { Profile } from '../../components/Profile';
 // import { getItems } from '../../actions';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import PropTypes from 'prop-types';
 
 import './styles.css';
 
 
 class ProfileContainer extends Component {
-
-    // componentDidMount() {
-    //     this.props.getItems();
-    // }
     render() { 
-        // const {items, users} = this.props
         const {user, loading} = this.props.data
         if (loading) return <CircularLoader />;
         return (
@@ -25,22 +21,10 @@ class ProfileContainer extends Component {
         );
     }
 }
-// const mapStateToProps = (state, ownProps) => {
-//     return {
-//         items: state.items.allItems.filter(item => {
-//             if(ownProps.match.params.userid === item.itemowner.id) {
-//               return item
-//             }
-//         }),
-//         users: state.items.users.find(user => {
-//             if(ownProps.match.params.userid === user.id) {
-//                 return user
-//             }
-//         }),
-//     }
-// }
 
-// export default connect(mapStateToProps, { getItems })(ProfileContainer);
+ProfileContainer.PropTypes = {
+    data: PropTypes.object.isRequired
+}
 
 export const usersQuery = gql`
     query getUsers($id: ID!) {

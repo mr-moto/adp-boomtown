@@ -5,14 +5,11 @@ import { connect } from 'react-redux'
 // import { getItems } from '../../actions'
 import { ShareButton } from '../../components/ShareButton'
 import { graphql } from 'react-apollo';
+import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import './styles.css';
 
 class ItemsContainer extends Component {
-
-    // componentDidMount() {
-    //         this.props.getItems()
-    // }
     filterItems() {
         const { selectedTags } = this.props
         const { items } = this.props.data
@@ -28,6 +25,7 @@ class ItemsContainer extends Component {
     render() {
         const filteredItems = this.filterItems();
         const { loading } = this.props.data;
+        console.log(this.props)
         if (loading) return <CircularLoader />;
         return (
             <div className="itemsContainer">
@@ -37,6 +35,14 @@ class ItemsContainer extends Component {
         );
     } 
 }   
+
+ItemsContainer.PropTypes = {
+    selectedTags: PropTypes.array.isRequired,
+    data: PropTypes.shape({
+        itemsData: PropTypes.array,
+        loading: PropTypes.bool
+    }).isRequired
+}
 
 export const itemsQuery = gql`
     query getItems {

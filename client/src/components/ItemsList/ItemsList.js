@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import ItemCard from '../ItemCard/ItemCard'
 import Masonry from 'react-masonry-component';
+import PropTypes from 'prop-types'
 import './styles.css';
 
 class ItemsList extends Component {
     render() {
         const {itemsData} = this.props
-        console.log(this.props)
         return (
             <div className="itemsListWrapper">
                 <Masonry>
@@ -20,5 +20,25 @@ class ItemsList extends Component {
         );
     }
 }
+
+ItemsList.PropTypes = {
+    itemsData: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            available: PropTypes.bool.isRequired, 
+            imageurl: PropTypes.string, 
+            itemowner: PropTypes.shape({
+                id: PropTypes.string,
+                fullname: PropTypes.string,
+                email: PropTypes.string
+            }).isRequired, 
+            created: PropTypes.string.isRequired, 
+            title: PropTypes.string.isRequired, 
+            tags: PropTypes.array, 
+            description: PropTypes.string
+        })
+    )
+}
+
 
 export default ItemsList;

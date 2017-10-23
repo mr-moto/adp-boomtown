@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { MuiThemeProvider, AppBar, SelectField, MenuItem, RaisedButton } from 'material-ui'
 import { Filter } from '../../components/Filter'
+import PropTypes from 'prop-types'
 import boomLogo from '../../images/boomtown-logo.svg'
 import './styles.css'
 
 class Header extends Component {
-    
     render() {
         let location = window.location.href;
+        console.log(location)
         return(
             <AppBar 
                 showMenuIconButton={false}
@@ -38,5 +39,8 @@ class Header extends Component {
     }
 }
 
+Header.PropTypes = {
+    location: PropTypes.string.isRequired
+}
 
 export default Header

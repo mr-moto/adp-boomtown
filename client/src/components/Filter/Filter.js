@@ -3,6 +3,7 @@ import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import { connect } from 'react-redux'
 import { filteredItems } from '../../actions/itemActions'
+import PropTypes from 'prop-types'
 
 
 const Filter = ({selectedTags, dispatch}) => {
@@ -31,6 +32,12 @@ const Filter = ({selectedTags, dispatch}) => {
         })}
         </SelectField>
     );
+}
+
+
+Filter.PropTypes = {
+    selectedTags: PropTypes.array.isRequired,
+    dispatch: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({

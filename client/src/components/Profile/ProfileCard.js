@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import Paper from 'material-ui/Paper'
 import Gravatar from 'react-gravatar'
+import PropTypes from 'prop-types'
+
 
 const ProfileCard = ({userData}) => {
     const shareCount = userData.owneditems.length
@@ -23,4 +25,15 @@ const ProfileCard = ({userData}) => {
         </Paper>
     );
 }
+
+ProfileCard.PropTypes = {
+    userData: PropTypes.shape({
+        owneditems: PropTypes.array,
+        borroweditems: PropTypes.array,
+        fullname: PropTypes.string.isRequired,
+        bio: PropTypes.string,
+        email: PropTypes.string.isRequired 
+    })
+}
+
 export default ProfileCard;

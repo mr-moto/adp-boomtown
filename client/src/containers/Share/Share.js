@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { reduxForm, Field, formValueSelector } from "redux-form";
 import { Step, Stepper, StepLabel, StepContent } from "material-ui/Stepper";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
+import { TextArea, TextInput } from "./TextInput";
 
 class Share extends Component {
     state = {
@@ -77,20 +79,24 @@ class Share extends Component {
                                 Folks need to know what you're sharing. Give
                                 them a clue by adding a title & description.
                             </p>
-                            <TextField
+                            <form action="">
+                                <Field name="textInput" component={TextInput} />
+                                <Field name="textArea" component={TextArea} />
+                            </form>
+                            {/* <TextField
                                 name="title"
                                 type="text"
                                 hintText="Title"
                                 floatingLabelText="Title"
                                 floatingLabelFocusStyle={{ color: "white" }}
-                            />
-                            <TextField
+                            /> */}
+                            {/* <TextField
                                 name="description"
                                 type="text"
                                 hintText="Description"
                                 floatingLabelText="Description"
                                 floatingLabelFocusStyle={{ color: "white" }}
-                            />
+                            /> */}
                             {this.renderStepActions(1)}
                         </StepContent>
                     </Step>
@@ -166,4 +172,8 @@ class Share extends Component {
     }
 }
 
-export default Share;
+const shareForm = reduxForm({
+    form: "shareForm"
+})(Share);
+
+export default shareForm;

@@ -1,8 +1,12 @@
-import { combineReducers } from 'redux';
-import client from '../config/apolloClient';
-import itemReducer from './modules/items';
+import { combineReducers } from "redux";
+import { reducer as formReducer } from "redux-form";
+import client from "../config/apolloClient";
+import itemReducer from "./modules/items";
 
-export const rootReducer = combineReducers({
+const reducers = {
+    form: formReducer,
     apollo: client.reducer(),
     items: itemReducer
-})
+};
+
+export const rootReducer = combineReducers(reducers);

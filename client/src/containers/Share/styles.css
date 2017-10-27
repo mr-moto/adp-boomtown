@@ -1,0 +1,21 @@
+.shareContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.cardContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card {
+    max-width: 300px;
+    width: 100%;
+}
+.stepperContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

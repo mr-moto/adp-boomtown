@@ -24,46 +24,48 @@ class ItemCard extends Component {
             tags,
             description
         } = this.props.item;
-        const { available } = this.props.available;
+        const { available } = this.props;
+        console.log(available);
         const tagTitles = tags.reduce((acc, curr) => {
             acc.push(curr.title);
             return acc;
         }, []);
-        console.log(tagTitles);
         return (
-            <Card>
-                <CardMedia
-                    overlay={
-                        !available ? (
-                            <CardTitle
-                                subtitle="Unavailable"
-                                style={{ textTransform: "uppercase" }}
-                            />
-                        ) : null
-                    }
-                >
-                    <img src={imageurl} alt="" />
-                </CardMedia>
-                <Link to={`/profile/${itemowner.id}`}>
-                    <CardHeader
-                        title={itemowner.fullname}
-                        subtitle={moment(created).fromNow()}
-                        avatar={
-                            <Gravatar
-                                className="gravatarUserImage"
-                                email={itemowner.email}
-                            />
+            <div className="card">
+                <Card>
+                    <CardMedia
+                        overlay={
+                            !available ? (
+                                <CardTitle
+                                    subtitle="Unavailable"
+                                    style={{ textTransform: "uppercase" }}
+                                />
+                            ) : null
                         }
-                    />
-                </Link>
-                <CardTitle title={title} subtitle={tagTitles.join(", ")} />
-                <CardText>{description}</CardText>
-                <CardActions>
-                    {available ? (
-                        <RaisedButton label={"Borrow"} secondary={true} />
-                    ) : null}
-                </CardActions>
-            </Card>
+                    >
+                        <img src={imageurl} alt="" />
+                    </CardMedia>
+                    <Link to={`/profile/${itemowner.id}`}>
+                        <CardHeader
+                            title={itemowner.fullname}
+                            subtitle={moment(created).fromNow()}
+                            avatar={
+                                <Gravatar
+                                    className="gravatarUserImage"
+                                    email={itemowner.email}
+                                />
+                            }
+                        />
+                    </Link>
+                    <CardTitle title={title} subtitle={tagTitles.join(", ")} />
+                    <CardText>{description}</CardText>
+                    <CardActions>
+                        {available ? (
+                            <RaisedButton label={"Borrow"} secondary={true} />
+                        ) : null}
+                    </CardActions>
+                </Card>
+            </div>
         );
     }
 }

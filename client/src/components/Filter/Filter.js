@@ -34,13 +34,13 @@ const Filter = ({ selectedTags, dispatch }) => {
             {tags.map(tag => {
                 return (
                     <MenuItem
-                        key={tag.title}
+                        key={tag.tagid}
                         insetChildren={true}
                         checked={
-                            selectedTags && selectedTags.includes(tag.name)
+                            selectedTags && selectedTags.includes(tag.title)
                         }
-                        value={tag.name}
-                        primaryText={tag.name}
+                        value={tag.title}
+                        primaryText={tag.title}
                     />
                 );
             })}

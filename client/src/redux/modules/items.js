@@ -1,25 +1,23 @@
-//action
-const UPDATE_FILTER = 'UPDATE_FILTER'
+// action
+const UPDATE_FILTER = "UPDATE_FILTER";
 
-
-//action creator
-export const filteredItems = (tag) => {
-    return { type: UPDATE_FILTER, tag }
+// action creator
+export const filteredItems = tag => {
+    return { type: UPDATE_FILTER, tag };
 };
 
-
-//reducer
+// reducer
 const initialState = {
     selectedTags: []
-}
+};
 export default (state = initialState, action) => {
     switch (action.type) {
-        case 'UPDATE_FILTER':
+        case "UPDATE_FILTER":
             return {
-                ...state, 
+                ...state,
                 selectedTags: action.tag
-            }
+            };
         default:
             return state;
     }
-}
+};

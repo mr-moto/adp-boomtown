@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import { ItemsList } from '../../components/ItemsList'
-import {CircularLoader} from '../../components/CircularLoader'
-import { connect } from 'react-redux'
+import React, { Component } from "react";
+import { ItemsList } from "../../components/ItemsList";
+import { CircularLoader } from "../../components/CircularLoader";
+import { connect } from "react-redux";
 // import { getItems } from '../../actions'
-import { ShareButton } from '../../components/ShareButton'
-import { graphql } from 'react-apollo';
-import PropTypes from 'prop-types';
-import gql from 'graphql-tag';
-import './styles.css';
+import { ShareButton } from "../../components/ShareButton";
+import { graphql } from "react-apollo";
+import PropTypes from "prop-types";
+import gql from "graphql-tag";
+import "./styles.css";
 
 class ItemsContainer extends Component {
     filterItems() {
-        const { selectedTags } = this.props
-        const { items } = this.props.data
-        if(selectedTags.length) {
+        const { selectedTags } = this.props;
+        const { items } = this.props.data;
+        if (selectedTags.length) {
             return items.filter(item => {
-                return item.tags.find(tag => 
-                    selectedTags.includes(tag)
-                )
+                return item.tags.find(tag => selectedTags.includes(tag.tagid));
             });
-        } return items   
-     }
+        }
+        return items;
+    }
 
     render() {
+        console.log(this.props.data.items);
         const filteredItems = this.filterItems();
         const { loading } = this.props.data;
         if (loading) return <CircularLoader />;
@@ -32,8 +32,8 @@ class ItemsContainer extends Component {
                 <ShareButton />
             </div>
         );
-    } 
-}   
+    }
+}
 
 ItemsContainer.PropTypes = {
     selectedTags: PropTypes.array.isRequired,
@@ -41,7 +41,7 @@ ItemsContainer.PropTypes = {
         itemsData: PropTypes.array,
         loading: PropTypes.bool
     }).isRequired
-}
+};
 
 export const itemsQuery = gql`
     query getItems {
@@ -50,14 +50,16 @@ export const itemsQuery = gql`
             title
             description
             imageurl
-            tags
+            tags {
+                tagid
+                title
+            }
             itemowner {
                 id
                 email
                 fullname
             }
             created
-            available
             borrower {
                 fullname
             }
@@ -65,9 +67,9 @@ export const itemsQuery = gql`
     }
 `;
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     selectedTags: state.items.selectedTags
 });
 
-const QueriedItems =  graphql(itemsQuery)(ItemsContainer);
-export default connect(mapStateToProps)(QueriedItems)
+const QueriedItems = graphql(itemsQuery)(ItemsContainer);
+export default connect(mapStateToProps)(QueriedItems);

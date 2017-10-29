@@ -9,7 +9,7 @@
     justify-content: center;
     align-items: center;
 }
-.card {
+.shareContainer .card {
     max-width: 300px;
     width: 100%;
 }

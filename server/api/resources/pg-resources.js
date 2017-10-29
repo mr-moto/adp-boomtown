@@ -12,6 +12,9 @@ export default function(app) {
     }); //get database stuff with the info from configs
 
     return {
+        getItem(id){
+            return pool.query(`SELECT * FROM items WHERE id='${id}'`).then(res => (res.rows));
+        },
         getItems() {
             return pool.query("SELECT * FROM items").then(res => res.rows); //helper to query items from above pool || get the rows from the response
         },
@@ -24,6 +27,12 @@ export default function(app) {
                     `SELECT tags.tagid, tags.title FROM tags JOIN itemtags on tags.tagid = itemtags.tagid WHERE itemtags.itemid = ${itemId}` //get tags associated with the itemid and joins
                 )
                 .then(res => res.rows);
+            },
+        borrowedItems(id){
+            return pool.query(`SELECT * FROM items WHERE borrower='${id}'`).then(res => (res.rows));
+        },
+        ownedItems(id){
+            return pool.query(`SELECT * FROM items WHERE itemowner='${id}'`).then(res => res.rows);
         }
     };
 }

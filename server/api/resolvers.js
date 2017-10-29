@@ -1,14 +1,15 @@
 import fetch from "node-fetch";
-// import {
+import {
 //     getItems,
 //     getUsers,
 //     getItem,
 //     getUser,
 //     ownedItems,
 //     borrowedItems,
-//     createItem
-// } from "./resources/jsonHelpers"; //dont know if i need this. keep here just in case 💪
+    createItem
+} from "./resources/jsonHelpers";
 import { database } from "../index.js";
+import { getUsers } from './resources/firebaseHelpers';
 
 const resolveFunctions = {
     Query: {

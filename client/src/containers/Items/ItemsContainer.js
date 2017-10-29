@@ -22,7 +22,6 @@ class ItemsContainer extends Component {
     }
 
     render() {
-        console.log(this.props.data.items);
         const filteredItems = this.filterItems();
         const { loading } = this.props.data;
         if (loading) return <CircularLoader />;

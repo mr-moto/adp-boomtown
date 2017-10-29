@@ -25,7 +25,6 @@ class ItemCard extends Component {
             description
         } = this.props.item;
         const { available } = this.props;
-        console.log(available);
         const tagTitles = tags.reduce((acc, curr) => {
             acc.push(curr.title);
             return acc;

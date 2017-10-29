@@ -9,19 +9,34 @@ const config = {
     messagingSenderId: "1079271318974"
 };
 firebase.initializeApp(config);
+
 const firebaseDB = firebase.database();
 
-export const getUser = () => {
-    return new Promise((resolve, reject) => {
-        firebaseDB
-            .ref(`/users/${id}`)
-            .once("value")
-            .then(snapshot => {
+export const getUser = id =>{
+  return new Promise((resolve, reject)=>{
+    firebaseDB.ref(`/users/${id}`)
+              .once('value')
+              .then((snapshot)=>{
                 resolve({
-                    ...snapshot.val(),
-                    id
-                });
-            })
-            .catch(error => console.log(error));
-    });
+                  ...snapshot.val(),
+                  id
+                })
+              })
+              .catch(error => {
+                console.log(error);
+              })
+  });
+};
+
+export const getUsers = () =>{
+  return new Promise((resolve, reject)=>{
+    firebaseDB.ref(`/users`)
+              .once('value')
+              .then((snapshot)=>{
+                console.log('test',snapshot.val());
+              })
+              .catch(error => {
+                console.log(error);
+              })
+  })
 };

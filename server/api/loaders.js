@@ -2,19 +2,21 @@ import DataLoader from "dataloader";
 import {
     // ownedItems,
     // borrowedItems,
-    // getItem,
-    getUser
-} from "./resources/firebaseHelpers";
+    getItem,
+    // getUser
+} from "./resources/jsonHelpers";
+import { getUser } from "./resources/firebaseHelpers"
+import { database } from '../index'
 
 export default function() {
     return {
         ownedItems: new DataLoader(ids =>
-            Promise.all(ids.map(id => ownedItems(id)))
+            Promise.all(ids.map(id => database.ownedItems(id)))
         ),
         borrowedItems: new DataLoader(ids =>
-            Promise.all(ids.map(id => borrowedItems(id)))
+            Promise.all(ids.map(id => database.borrowedItems(id)))
         ),
-        getItem: new DataLoader(ids => Promise.all(ids.map(id => getItem(id)))),
+        getItem: new DataLoader(ids => Promise.all(ids.map(id => database.getItem(id)))),
         getUser: new DataLoader(ids => Promise.all(ids.map(id => getUser(id))))
     };
 }

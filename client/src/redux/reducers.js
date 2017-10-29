@@ -2,11 +2,11 @@ import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
 import client from "../config/apolloClient";
 import itemReducer from "./modules/items";
+import authReducer from "./modules/auth";
 
-const reducers = {
+export default combineReducers({
     form: formReducer,
     apollo: client.reducer(),
-    items: itemReducer
-};
-
-export const rootReducer = combineReducers(reducers);
+    items: itemReducer,
+    auth: authReducer
+});

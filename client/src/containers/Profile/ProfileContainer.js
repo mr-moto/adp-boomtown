@@ -61,7 +61,10 @@ export const usersQuery = gql`
                 title
                 description
                 imageurl
-                tags
+                tags {
+                    tagid
+                    title
+                }
                 itemowner {
                     id
                     email

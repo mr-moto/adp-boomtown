@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { reduxForm, Field, formValueSelector } from "redux-form";
+import { reduxForm, Field } from "redux-form";
 import { Step, Stepper, StepLabel, StepContent } from "material-ui/Stepper";
-import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
@@ -172,8 +171,8 @@ class Share extends Component {
     }
 }
 
-const shareForm = reduxForm({
+const ShareForm = reduxForm({
     form: "shareForm"
 })(Share);
 
-export default shareForm;
+export default ShareForm;

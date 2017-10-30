@@ -6,6 +6,7 @@ import {
     // getUser
 } from "./resources/jsonHelpers";
 import { getUser } from "./resources/firebaseHelpers"
+import { ownedItems, borrowedItems } from "./resources/pg-resources"
 import { database } from '../index'
 
 export default function() {

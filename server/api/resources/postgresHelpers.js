@@ -47,7 +47,7 @@ export async function getUser(id) {
 	}
 }
 
-export async function ownedItems(id = "") {
+export async function ownedItems(id) {
 	try {
 		const response = await fetch(`${url}/items/?itemowner=${id}`);
 		const owneditems = await response.json();

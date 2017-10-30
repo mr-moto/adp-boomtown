@@ -1,6 +1,6 @@
 # BOOMTOWN
 
-Boomtown is an app that lets you share you stuff with everyone else. Cause sharing is caring..
+Boomtown is an app that lets you share your stuff with everyone else. Cause sharing is caring..
 
 ### Installation
 
@@ -13,7 +13,8 @@ cd client && npm install
 ### Todos
 
  - Refactor
- - Add share and borrow features
- - Add propTypes
- - Add user sign up/login Auth
- - Add filtering of items
+ - Cleanup (follow eslint rules)
+ - Image upload feature
+ - Use redux for state on share page
+ - display tags on card on share page
+ - display current user on card on share page
